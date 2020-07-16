@@ -35,21 +35,21 @@ namespace TestSample
 
         public static readonly BindableProperty TextSizeProperty =
             BindableProperty.Create(
-                propertyName: nameof(Unit),
-                returnType: typeof(Unit),
+                propertyName: "TextSize",
+                returnType: typeof(float),
                 declaringType: typeof(TextView),
-                defaultValue: new Unit(9999),
+                defaultValue: 9999.0f,
                 propertyChanged: OnTextSizeChanged);
 
         private static void OnTextSizeChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var textView = (TextView)bindable;
-            textView.SizeLabel.Text = $"TextChanged from {((Unit)oldValue).Value} to {((Unit)newValue).Value}";
+            textView.SizeLabel.Text = $"TextChanged from {(float)oldValue} to {(float)newValue}";
             // Never executed! even if I change text size, this code does not executed.
         }
-        public Unit TextSize
+        public float TextSize
         {
-            get => (Unit)GetValue(TextSizeProperty);
+            get => (float)GetValue(TextSizeProperty);
             set => SetValue(TextSizeProperty, value);
         }
 

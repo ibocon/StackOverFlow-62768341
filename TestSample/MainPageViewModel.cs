@@ -19,14 +19,17 @@ namespace TestSample
 
             _unit = new Unit(0);
             _model = new Model(_unit, "A");
-            ViewModel = new ViewModel();
-            ViewModel.Model = _model;
+            ViewModel = new ViewModel
+            {
+                Model = _model
+            };
         }
 
         public IMvxCommand Command => new MvxCommand(() =>
         {
-            _model.Text = "B";
-            _unit.Value = 1;
+            var c = Convert.ToChar(_model.Text);
+            _model.Text = Convert.ToString(++c);
+            _unit.Value += 1;
         });
     }
 }

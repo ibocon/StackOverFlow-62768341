@@ -5,7 +5,7 @@ using System.Text;
 
 namespace TestSample
 {
-    public class Unit : MvxNotifyPropertyChanged
+    public class Unit
     {
         protected float _value;
 
@@ -17,7 +17,14 @@ namespace TestSample
         public float Value
         {
             get => _value;
-            set => SetProperty(ref _value, value);
+            set 
+            {
+                _value = value;
+
+                ValueChanged?.Invoke(this, new EventArgs());
+            } 
         }
+
+        public event EventHandler ValueChanged;
     }
 }

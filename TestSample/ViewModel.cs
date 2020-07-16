@@ -17,10 +17,8 @@ namespace TestSample
             get => _model;
             set => SetProperty(ref _model, value, () =>
             {
-                _model.PropertyChanged += (sender, e) =>
-                {
-                    RaiseAllPropertiesChanged();
-                };
+                _model.TextChanged += (sender, e) => { RaisePropertyChanged(nameof(Text)); };
+                _model.TextSizeChanged += (sender, e) => { RaisePropertyChanged(nameof(TextSize)); };
             });
         }
 
@@ -30,10 +28,10 @@ namespace TestSample
             set => _model.Text = value;
         }
 
-        public Unit TextSize
+        public float TextSize
         {
-            get => _model.TextSize;
-            set => _model.TextSize = value;
+            get => _model.TextSize.Value;
+            set => _model.TextSize.Value = value;
         }
 
         public override void Prepare(Model parameter)

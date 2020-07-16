@@ -5,31 +5,36 @@ using System.Text;
 
 namespace TestSample
 {
-    public class Model : MvxNotifyPropertyChanged
+    public class Model
     {
-        private Unit _textSize;
-        private string _text;
 
         public Model(Unit textSize, string text)
         {
-            _textSize = textSize;
-            _textSize.PropertyChanged += (sender, e) =>
+            TextSize = textSize;
+            TextSize.ValueChanged += (sender, e) =>
             {
-                RaiseAllPropertiesChanged();
+                TextSizeChanged?.Invoke(sender, e);
             };
-            _text = text;
+            Text = text;
         }
 
-        public string Text
+        private string text;
+        public string Text 
         {
-            get => _text;
-            set => SetProperty(ref _text, value);
+            get
+            {
+                return text;
+            }
+            set
+            {
+                text = value;
+                TextChanged?.Invoke(this, new EventArgs());
+            } 
         }
 
-        public Unit TextSize
-        {
-            get => _textSize;
-            set => SetProperty(ref _textSize, value);
-        }
+        public Unit TextSize { get; set; }
+
+        public event EventHandler TextChanged;
+        public event EventHandler TextSizeChanged;
     }
 }
