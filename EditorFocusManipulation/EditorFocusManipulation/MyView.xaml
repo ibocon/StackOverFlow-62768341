@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="EditorFocusManipulation.MyView">
+    <ContentView.Content>
+        <StackLayout>
+            <Editor x:Name="Editor"
+                    Text="{Binding Text, Mode=TwoWay}">
+            </Editor>
+            <Button x:Name="Button"
+                    Text="Complete"
+                    Clicked="Button_Clicked" />
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:EditorFocusManipulation"
+             x:Class="EditorFocusManipulation.MainPage">
+    <StackLayout>
+        <Button x:Name="Button"
+                Text="Show Editor"
+                HorizontalOptions="Center"
+                Clicked="Button_Clicked" />
+        <local:MyView x:Name="MyView"
+                      HorizontalOptions="Center"
+                      IsVisible="False"/>
+    </StackLayout>
+</ContentPage>
