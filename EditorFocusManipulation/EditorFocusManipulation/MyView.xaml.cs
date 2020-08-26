@@ -8,16 +8,9 @@ namespace EditorFocusManipulation
 {
     public partial class MyView : ContentView
     {
-        private Task _focusEditorTask;
-        private Task _unfocusEditorTask;
-
-        public event EventHandler LostFocused;
-
         public MyView()
         {
             InitializeComponent();
-
-            _focusEditorTask = _unfocusEditorTask = Task.CompletedTask;
         }
 
         void Button_Clicked(object sender, EventArgs e)
@@ -25,53 +18,39 @@ namespace EditorFocusManipulation
             IsVisible = false;
         }
 
-        private void OnEditorUnfocused(object sender, FocusEventArgs e)
+        private async void OnEditorUnfocused(object sender, FocusEventArgs e)
         {
             if (IsVisible)
             {
-                FocusEditor();
+                await FocusEditorAsync();
                 Console.WriteLine($"<Unfocused> Editor: Focused {Editor.IsFocused}");
             }
         }
 
-        private void FocusEditor()
+        private async Task FocusEditorAsync()
         {
-            _unfocusEditorTask.Wait();
-            _focusEditorTask.Wait();
+            Console.WriteLine($"<FocusEditor> START {Editor.IsFocused}");
 
-            _focusEditorTask = Task.Factory.StartNew(async () =>
+            while (!Editor.IsFocused)
             {
-                Console.WriteLine($"<FocusEditor> START {Editor.IsFocused}");
-
-                while (!Editor.IsFocused)
-                {
-                    Editor.Focus();
-                    await Task.Delay(100);
-                    Console.WriteLine($"<FocusEditor> PROGRESS {Editor.IsFocused}");
-                }
-                Console.WriteLine($"<FocusEditor> END {Editor.IsFocused}");
-            });
+                Editor.Focus();
+                await Task.Delay(100);
+                Console.WriteLine($"<FocusEditor> PROGRESS {Editor.IsFocused}");
+            }
+            Console.WriteLine($"<FocusEditor> END {Editor.IsFocused}");
         }
 
-        private void UnfocusEditor()
+        private async Task UnfocusEditorAsync()
         {
-            _focusEditorTask.Wait();
-            _unfocusEditorTask.Wait();
-
-            _unfocusEditorTask = Task.Factory.StartNew(async () =>
+            Console.WriteLine($"<!UnfocusEditor> START {Editor.IsFocused}");
+            while (Editor.IsFocused)
             {
-                Console.WriteLine($"<!UnfocusEditor> START {Editor.IsFocused}");
-                while (Editor.IsFocused)
-                {
-                    Editor.Unfocus();
-                    await Task.Delay(100);
-                    Console.WriteLine($"<!UnfocusEditor> PROGRESS {Editor.IsFocused}");
-                }
+                Editor.Unfocus();
+                await Task.Delay(100);
+                Console.WriteLine($"<!UnfocusEditor> PROGRESS {Editor.IsFocused}");
+            }
 
-                Console.WriteLine($"<!UnfocusEditor> END {Editor.IsFocused}");
-
-                return Task.CompletedTask;
-            });
+            Console.WriteLine($"<!UnfocusEditor> END {Editor.IsFocused}");
         }
 
         protected override void OnPropertyChanging([CallerMemberName] string propertyName = null)
@@ -80,7 +59,7 @@ namespace EditorFocusManipulation
             {
                 Console.WriteLine($"<IsVisibleChanging> InputView: IsVisible ({IsVisible}) -> {!IsVisible}");
                 Editor.Unfocused -= OnEditorUnfocused;
-                UnfocusEditor();
+                UnfocusEditorAsync().Wait();
             }
 
             base.OnPropertyChanging(propertyName);
@@ -92,7 +71,7 @@ namespace EditorFocusManipulation
             {
                 Console.WriteLine($"<IsVisibleChanged> InputView: IsVisible {!IsVisible} -> ({IsVisible})");
                 Editor.Unfocused += OnEditorUnfocused;
-                FocusEditor();
+                FocusEditorAsync().Wait();
             }
 
             base.OnPropertyChanged(propertyName);
