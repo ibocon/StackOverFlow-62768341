@@ -11,6 +11,7 @@ namespace EditorFocusManipulation
         public MyView()
         {
             InitializeComponent();
+            Editor.Unfocused += OnEditorUnfocused;
         }
 
         void Button_Clicked(object sender, EventArgs e)
@@ -58,8 +59,6 @@ namespace EditorFocusManipulation
             if (propertyName.Equals("IsVisible") && IsVisible)
             {
                 Console.WriteLine($"<IsVisibleChanging> InputView: IsVisible ({IsVisible}) -> {!IsVisible}");
-                Editor.Unfocused -= OnEditorUnfocused;
-                UnfocusEditorAsync().Wait();
             }
 
             base.OnPropertyChanging(propertyName);
@@ -70,8 +69,6 @@ namespace EditorFocusManipulation
             if (propertyName.Equals("IsVisible") && IsVisible)
             {
                 Console.WriteLine($"<IsVisibleChanged> InputView: IsVisible {!IsVisible} -> ({IsVisible})");
-                Editor.Unfocused += OnEditorUnfocused;
-                FocusEditorAsync().Wait();
             }
 
             base.OnPropertyChanged(propertyName);
