@@ -26,6 +26,10 @@ namespace EditorFocusManipulation
                 await FocusEditorAsync();
                 Console.WriteLine($"<Unfocused> Editor: Focused {Editor.IsFocused}");
             }
+            else
+            {
+                await UnfocusEditorAsync();
+            }
         }
 
         private async Task FocusEditorAsync()
@@ -64,12 +68,12 @@ namespace EditorFocusManipulation
             base.OnPropertyChanging(propertyName);
         }
 
-        protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected override async void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             if (propertyName.Equals("IsVisible") && IsVisible)
             {
                 Console.WriteLine($"<IsVisibleChanged> InputView: IsVisible {!IsVisible} -> ({IsVisible})");
-                FocusEditorAsync();
+                await FocusEditorAsync();
             }
 
             base.OnPropertyChanged(propertyName);
