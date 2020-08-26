@@ -69,6 +69,7 @@ namespace EditorFocusManipulation
             if (propertyName.Equals("IsVisible") && IsVisible)
             {
                 Console.WriteLine($"<IsVisibleChanged> InputView: IsVisible {!IsVisible} -> ({IsVisible})");
+                FocusEditorAsync();
             }
 
             base.OnPropertyChanged(propertyName);
