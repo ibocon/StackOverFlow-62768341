@@ -89,7 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EditorFocusManipulation\EditorFocusManipulation.csproj">
-      <Project>{9A39BA82-52FC-4133-A0DC-BC5615CABFB3}</Project>
+      <Project>{8AA92A96-7E75-4F75-BA56-6908D280193D}</Project>
       <Name>EditorFocusManipulation</Name>
     </ProjectReference>
   </ItemGroup>
