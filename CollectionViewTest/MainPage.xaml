@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Test="clr-namespace:CollectionViewTest"
+    x:Class="CollectionViewTest.MainPage">
+        <ScrollView IsVisible="True">
+        <CollectionView
+            ItemsSource="{Binding ItemSource}"
+            SelectionMode="Single">
+
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout
+                    Orientation="Vertical"
+                    Span="4"
+                    VerticalItemSpacing="10"/>
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Image
+                        Source="{Test:ImageResource CollectionViewTest.waterfront.jpg}"
+                        Aspect="AspectFit"
+                        WidthRequest="70"
+                        HeightRequest="70"/>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+    </ScrollView>
+</ContentPage>
