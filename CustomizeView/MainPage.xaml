@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:CustomizeView="clr-namespace:CustomizeView"
+    x:Class="CustomizeView.MainPage">
+    <Frame
+        HorizontalOptions="Center"
+        VerticalOptions="Center">
+        <CustomizeView:ParentView>
+            <CustomizeView:ParentView.Child>
+                <CustomizeView:ChildView
+                    Text="Hello, Parent!"/>
+            </CustomizeView:ParentView.Child>
+        </CustomizeView:ParentView>
+    </Frame>
+</ContentPage>
