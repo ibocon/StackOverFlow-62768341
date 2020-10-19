@@ -14,7 +14,7 @@ namespace CustomizeView
                 defaultValue: null,
                 propertyChanged: (b, o, n) =>
                 {
-                    (b as ParentView).Child = (ChildView)n;
+                    (b as ParentView).NestedView.Text = (n as ChildView).Text;
                 });
         public ChildView Child
         {
