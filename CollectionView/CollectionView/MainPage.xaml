@@ -9,30 +9,35 @@
         <local:MainPageViewModel />
     </ContentPage.BindingContext>
 
-    <CollectionView
-        ItemsSource="{Binding Items}">
+    <StackLayout>
+        <CollectionView
+            VerticalOptions="FillAndExpand"
+            HeightRequest="50"
+            ItemsSource="{Binding Items}">
 
-        <CollectionView.ItemsLayout>
-            <GridItemsLayout
-                Orientation="Vertical"
-                Span="4"
-                HorizontalItemSpacing="10"
-                VerticalItemSpacing="10"/>
-        </CollectionView.ItemsLayout>
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout
+                    Orientation="Vertical"
+                    Span="4"
+                    HorizontalItemSpacing="10"
+                    VerticalItemSpacing="10"/>
+            </CollectionView.ItemsLayout>
                                     
-        <CollectionView.ItemTemplate>
-            <DataTemplate>
-                <StackLayout>
-                    <Image
-                        WidthRequest="50"
-                        HeightRequest="50"
-                        Source="{local:ImageResource CollectionView.Image.png}"/>
-                    <Label
-                        Text="{Binding Title}"
-                        HorizontalTextAlignment="Center"
-                        VerticalTextAlignment="Center" />
-                </StackLayout>
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <Image
+                            WidthRequest="50"
+                            HeightRequest="50"
+                            Source="{local:ImageResource CollectionView.Image.png}"/>
+                        <Label
+                            Text="{Binding Title}"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+
 </ContentPage>
