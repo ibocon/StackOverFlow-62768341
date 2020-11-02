@@ -14,5 +14,10 @@ namespace CollectionView
         {
             InitializeComponent();
         }
+
+        void Button_Clicked(object sender, EventArgs e)
+        {
+            Collection.IsVisible = !Collection.IsVisible;
+        }
     }
 }
