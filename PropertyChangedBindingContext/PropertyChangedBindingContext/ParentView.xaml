@@ -5,6 +5,7 @@
     xmlns:local="clr-namespace:PropertyChangedBindingContext"
     x:Class="PropertyChangedBindingContext.ParentView">
     <StackLayout>
+        <Label BackgroundColor="Yellow" Text="{Binding Title}" />
         <Editor x:Name="_editor"/>
         <local:ChildView
             BindingContext="{Binding ChildViewModel}"
