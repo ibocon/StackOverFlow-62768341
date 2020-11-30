@@ -32,7 +32,8 @@ namespace PropertyChangedBindingContext
         protected override void OnBindingContextChanged()
         {
             base.OnBindingContextChanged();
-            Console.WriteLine($"[PropertyChangedBindingContext] ChildView.OnBindingContextChanged {BindingContext.GetType()}");
+            if(BindingContext != null)
+                Console.WriteLine($"[PropertyChangedBindingContext] ChildView.OnBindingContextChanged {BindingContext.GetType()}");
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)

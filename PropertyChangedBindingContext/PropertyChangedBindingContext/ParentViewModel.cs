@@ -1,37 +1,27 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace PropertyChangedBindingContext
 {
     public class ParentViewModel : BaseViewModel
     {
-        private string _title;
-        public string Title
-        {
-            get => _title;
-            set
+        //private int count = 0;
+        public ICommand InitCommand => new Command(
+            () =>
             {
-                _title = value;
-                OnPropertyChanged(nameof(Title));
+                Console.WriteLine("Hello, World!");
+                //TitleModel = new TitleModel($"Hello, {count++}!");
             }
-        }
+        );
 
-        private ChildViewModel _childViewModel;
-        public ChildViewModel ChildViewModel
-        {
-            get => _childViewModel;
-            set
-            {
-                _childViewModel = value;
-                OnPropertyChanged(nameof(ChildViewModel));
-            }
-        }
+        //public TitleModel TitleModel { get; set; }
 
         public ParentViewModel()
         {
-            Title = "ParentViewModel";
-            ChildViewModel = new ChildViewModel();
+            //TitleModel = new TitleModel($"Fuck, {count++}!");
         }
 
     }

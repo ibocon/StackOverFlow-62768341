@@ -1,43 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace PropertyChangedBindingContext
 {
-    public partial class ParentView : ContentView, ITitleElement
+    public partial class ParentView : ContentView
     {
-        public static BindableProperty TitleProperty = TitleElement.TitleProperty;
-        public string Title
-        {
-            get => GetValue(TitleProperty) as string;
-            set => SetValue(TitleProperty, value);
-        }
-        public void OnTitleChanged(string newTitle)
-        {
-            _editor.Text = newTitle;
-        }
+        public static readonly BindableProperty CommandProperty = BindableProperty.Create("Command", typeof(ICommand), typeof(ParentView), null, BindingMode.OneWay);
+        //public ICommand TestCommand
+        //{
+        //    get => (ICommand)GetValue(TestCommandProperty);
+        //    set => SetValue(TestCommandProperty, value);
+        //}
+
         public ParentView()
         {
             InitializeComponent();
-            _editor.TextChanged += OnEditorTextChanged;
+            _button.Clicked += OnButtonClicked;
+            _button.BindingContextChanged += OnButtonBindingContextChanged;
         }
 
-        private void OnEditorTextChanged(object sender, TextChangedEventArgs e)
+        private void OnButtonBindingContextChanged(object sender, EventArgs e)
         {
-            Title = e.NewTextValue;
+            Console.WriteLine($"[PropertyChangedBindingContext] ParentView.OnButtonBindingContextChanged {_button.BindingContext.GetType()}");
+        }
+
+        private void OnButtonClicked(object sender, EventArgs e)
+        {
+            //Command.Execute(null);
         }
 
         protected override void OnBindingContextChanged()
         {
             base.OnBindingContextChanged();
-            Console.WriteLine($"[PropertyChangedBindingContext] ParentView.OnBindingContextChanged {BindingContext.GetType()}");
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             base.OnPropertyChanged(propertyName);
-            Console.WriteLine($"[PropertyChangedBindingContext] ParentView.OnPropertyChanged {propertyName}");
+            //Console.WriteLine($"[PropertyChangedBindingContext] ParentView.OnPropertyChanged {propertyName}");
         }
     }
 }

@@ -5,9 +5,12 @@
     xmlns:local="clr-namespace:PropertyChangedBindingContext"
     x:Class="PropertyChangedBindingContext.ParentView">
     <StackLayout>
-        <Editor x:Name="_editor"/>
-        <local:ChildView
-            BindingContext="{Binding ChildViewModel}"
-            Title="{Binding Title}"/>
+        <Button
+            x:Name="_button"
+            Text="Click"
+            Command="{Binding InitCommand}"/>
+        <!--<local:ChildView x:Name="_childView"
+                         BindingContext="{Binding TitleModel}"
+                         Title="{Binding Title}"/>-->
     </StackLayout>
 </ContentView>

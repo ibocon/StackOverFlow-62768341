@@ -5,10 +5,9 @@
              x:Class="PropertyChangedBindingContext.MainPage">
 
     <StackLayout>
-        <Editor x:Name="_editor" />
         <local:ParentView
-            BindingContext="{Binding ParentViewModel}"
-            Title="{Binding Title}"/>
+            x:Name="_parentView"
+            BindingContext="{Binding ParentViewModel}"/>
     </StackLayout>
 
 </ContentPage>
