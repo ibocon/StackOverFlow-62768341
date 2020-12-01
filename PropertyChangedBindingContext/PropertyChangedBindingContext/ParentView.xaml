@@ -5,6 +5,7 @@
     xmlns:local="clr-namespace:PropertyChangedBindingContext"
     x:Class="PropertyChangedBindingContext.ParentView">
     <StackLayout>
+        <Button Text="TitleCommand" Command="{Binding TitleCommand}" />
         <Label BackgroundColor="Yellow" Text="{Binding Title}" />
         <Editor x:Name="_editor" BackgroundColor="LightYellow"/>
         <local:ChildView

@@ -37,7 +37,7 @@ namespace PropertyChangedBindingContext
         public ParentViewModel()
         {
             Title = "ParentViewModel";
-            TitleModel = new TitleModel($"TitleModel {_count++}");
+            //TitleModel = new TitleModel($"TitleModel {_count++}");
         }
 
     }
