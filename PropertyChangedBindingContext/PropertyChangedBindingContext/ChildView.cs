@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 
 namespace PropertyChangedBindingContext
 {
-    public partial class ChildView : ContentView, ITitleElement
+    public class ChildView : ContentView, ITitleElement
     {
         public static BindableProperty TitleProperty = TitleElement.TitleProperty;
         public string Title
@@ -16,12 +15,30 @@ namespace PropertyChangedBindingContext
         public void OnTitleChanged(string newTitle)
         {
             _editor.Text = newTitle;
+            _label.Text = newTitle;
         }
+
+        private readonly Editor _editor;
+        private readonly Label _label;
 
         public ChildView()
         {
-            InitializeComponent();
+            _editor = new Editor
+            {
+                BackgroundColor = Color.Blue,
+            };
             _editor.TextChanged += OnEditorTextChanged;
+
+            _label = new Label
+            {
+                BackgroundColor = Color.AliceBlue,
+            };
+
+
+            Content = new StackLayout
+            {
+                Children = { _label, _editor }
+            };
         }
 
         private void OnEditorTextChanged(object sender, TextChangedEventArgs e)
@@ -40,7 +57,6 @@ namespace PropertyChangedBindingContext
             base.OnPropertyChanged(propertyName);
             Console.WriteLine($"[PropertyChangedBindingContext] ChildView.OnPropertyChanged {propertyName}");
         }
-
-
     }
 }
+

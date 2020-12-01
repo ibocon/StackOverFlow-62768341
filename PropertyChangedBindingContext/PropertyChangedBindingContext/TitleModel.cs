@@ -1,7 +1,7 @@
 ﻿using System;
 namespace PropertyChangedBindingContext
 {
-    public class ChildViewModel : BaseViewModel
+    public class TitleModel : BaseViewModel
     {
 
         private string _title;
@@ -15,9 +15,9 @@ namespace PropertyChangedBindingContext
             }
         }
 
-        public ChildViewModel()
+        public TitleModel(string title)
         {
-            Title = "ChildViewModel";
+            Title = title;
         }
     }
 }

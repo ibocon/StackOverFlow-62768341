@@ -6,9 +6,9 @@
     x:Class="PropertyChangedBindingContext.ParentView">
     <StackLayout>
         <Label BackgroundColor="Yellow" Text="{Binding Title}" />
-        <Editor x:Name="_editor"/>
+        <Editor x:Name="_editor" BackgroundColor="LightYellow"/>
         <local:ChildView
-            BindingContext="{Binding ChildViewModel}"
+            BindingContext="{Binding TitleModel}"
             Title="{Binding Title}"/>
     </StackLayout>
 </ContentView>

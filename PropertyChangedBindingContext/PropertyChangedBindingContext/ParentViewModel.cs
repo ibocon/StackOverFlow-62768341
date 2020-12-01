@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace PropertyChangedBindingContext
 {
@@ -17,21 +19,25 @@ namespace PropertyChangedBindingContext
             }
         }
 
-        private ChildViewModel _childViewModel;
-        public ChildViewModel ChildViewModel
+        private TitleModel _titleModel;
+        public TitleModel TitleModel
         {
-            get => _childViewModel;
+            get => _titleModel;
             set
             {
-                _childViewModel = value;
-                OnPropertyChanged(nameof(ChildViewModel));
+                _titleModel = value;
+                OnPropertyChanged(nameof(TitleModel));
             }
         }
+
+        private static int _count = 0;
+        public ICommand TitleCommand =>
+            new Command(() => TitleModel = new TitleModel($"TitleModel {_count++}"));
 
         public ParentViewModel()
         {
             Title = "ParentViewModel";
-            ChildViewModel = new ChildViewModel();
+            TitleModel = new TitleModel($"TitleModel {_count++}");
         }
 
     }
