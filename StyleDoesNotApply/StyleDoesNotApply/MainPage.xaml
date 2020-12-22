@@ -14,14 +14,13 @@
     </ContentPage.Resources>
     <StackLayout>
         <Label Text="Style does not apply"
-               FontSize="Title"
-               TextColor="Black"/>
+                FontSize="Title"
+                TextColor="Black"/>
         <local:MyView>
             <local:MyView.Views>
                 <local:MyFrame Style="{StaticResource Style}"
-                               HorizontalOptions="FillAndExpand"
-                               BackgroundColor="AliceBlue"
-                               Title="Number one" />
+                                HorizontalOptions="FillAndExpand"
+                                Title="Number one" />
             </local:MyView.Views>
         </local:MyView>
 
