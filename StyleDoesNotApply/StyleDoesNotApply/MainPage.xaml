@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:StyleDoesNotApply"
+             x:Class="StyleDoesNotApply.MainPage"
+
+             BackgroundColor="White">
+
+    <ContentPage.Resources>
+        <Style x:Key="Style" TargetType="local:MyFrame">
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="BackgroundColor" Value="LimeGreen" />
+        </Style>
+    </ContentPage.Resources>
+    <StackLayout>
+        <Label Text="Style does not apply"
+               FontSize="Title"
+               TextColor="Black"/>
+        <local:MyView>
+            <local:MyView.Views>
+                <local:MyFrame Style="{StaticResource Style}"
+                               HorizontalOptions="FillAndExpand"
+                               BackgroundColor="AliceBlue"
+                               Title="Number one" />
+            </local:MyView.Views>
+        </local:MyView>
+
+    </StackLayout>
+
+</ContentPage>
