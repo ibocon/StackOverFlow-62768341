@@ -27,11 +27,12 @@ namespace TypedHttpClient.Server.Controllers
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
+            var rand = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+                TemperatureC = rand.Next(-20, 55),
+                Summary = Summaries[rand.Next(Summaries.Length)]
             })
             .ToArray();
         }
