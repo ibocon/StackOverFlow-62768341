@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.810.9
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnauthorizedAccessException.Android", "UnauthorizedAccessException.Android\UnauthorizedAccessException.Android.csproj", "{6B6461ED-1FEB-48B8-8414-6415B4322B2C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnauthorizedAccessException", "UnauthorizedAccessException\UnauthorizedAccessException.csproj", "{ABCD7746-50CC-4114-BA91-120F87DE4B88}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6B6461ED-1FEB-48B8-8414-6415B4322B2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B6461ED-1FEB-48B8-8414-6415B4322B2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B6461ED-1FEB-48B8-8414-6415B4322B2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B6461ED-1FEB-48B8-8414-6415B4322B2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABCD7746-50CC-4114-BA91-120F87DE4B88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABCD7746-50CC-4114-BA91-120F87DE4B88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABCD7746-50CC-4114-BA91-120F87DE4B88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABCD7746-50CC-4114-BA91-120F87DE4B88}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0F23D4DD-3A76-4E76-A805-F4C445CD09FB}
+	EndGlobalSection
+EndGlobal
