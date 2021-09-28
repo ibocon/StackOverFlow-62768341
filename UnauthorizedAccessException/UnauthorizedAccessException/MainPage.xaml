@@ -4,7 +4,8 @@
              x:Class="UnauthorizedAccessException.MainPage">
 
     <StackLayout>
-        <Button Clicked="Button_Clicked"></Button>
+        <Button Clicked="Button_Clicked" Text="Decompress" />
+        <Label x:Name="_label"></Label>
     </StackLayout>
 
 </ContentPage>
