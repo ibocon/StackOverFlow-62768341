@@ -6,11 +6,12 @@ namespace WebApplication;
 public class ApplicationContext
 	: DbContext
 {
-    public ApplicationContext(DbContextOptions<ApplicationContext> options)
-    : base(options)
-    {
-    }
+	public ApplicationContext(DbContextOptions<ApplicationContext> options)
+		: base(options)
+	{
+	}
 
+	public DbSet<ManagerEntity> ManagerSet { get; set; }
 	public DbSet<PrinterEntity> PrinterSet { get; set; }
 
 	protected override void OnModelCreating(ModelBuilder modelBuilder)

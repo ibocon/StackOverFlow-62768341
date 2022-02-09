@@ -1,20 +1,12 @@
 ﻿namespace WebApplication;
 
-public class PrinterEntity
+public sealed class PrinterEntity
 	: Printer
 {
-    public PrinterEntity(long id, Guid token)
-        : base(token)
-    {
-        Id = id;
-    }
+	public PrinterEntity()
+		: base()
+	{
+	}
 
-    // should I define parameterless constructor for EntityFramework Core?
-    public PrinterEntity()
-        : base(Guid.Empty)
-    {
-        Id = 0;
-    }
-
-    public long Id { get; }
+	public long Id { get; }
 }

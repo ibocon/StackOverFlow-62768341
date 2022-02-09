@@ -7,5 +7,11 @@ public class Printer
 		Token = token;
 	}
 
+	protected Printer()
+	{
+	}
+
 	public Guid Token { get; }
+
+	public Manager? Manager { get; }
 }

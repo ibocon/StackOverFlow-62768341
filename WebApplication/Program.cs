@@ -20,6 +20,12 @@ if (app.Environment.IsDevelopment())
 	app.UseSwaggerUI();
 }
 
+app.MapGet("/printer", async (ApplicationContext context) =>
+{
+	IList<PrinterEntity> printers = await context.PrinterSet.ToListAsync();
+	return printers;
+});
+
 app.MapPost("/printer", async (ApplicationContext context) =>
 {
 	PrinterEntity printer = new();
