@@ -4,7 +4,7 @@ public sealed class ManagerEntity
 	: Manager
 {
 	public ManagerEntity(string email)
-		: base(email)
+		: base(Guid.Empty, email)
 	{
 	}
 

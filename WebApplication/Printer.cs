@@ -5,13 +5,10 @@ public class Printer
 	public Printer(Guid token)
 	{
 		Token = token;
-	}
-
-	protected Printer()
-	{
+		Manager = null;
 	}
 
 	public Guid Token { get; }
 
-	public Manager? Manager { get; }
+	public Manager? Manager { get; set; }
 }

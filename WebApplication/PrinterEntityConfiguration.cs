@@ -1,12 +1,19 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.EntityFrameworkCore.InMemory.ValueGeneration.Internal;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace WebApplication;
 
 internal sealed class PrinterEntityConfiguration
 	: IEntityTypeConfiguration<PrinterEntity>
 {
+	private readonly DatabaseFacade _database;
+
+	public PrinterEntityConfiguration(DatabaseFacade database)
+	{
+		_database = database;
+	}
+
 	public void Configure(EntityTypeBuilder<PrinterEntity> builder)
 	{
 		builder
@@ -20,9 +27,13 @@ internal sealed class PrinterEntityConfiguration
 			.HasIndex(e => e.Token)
 			.IsUnique();
 
-		builder
+		var tokenBuilder = builder
 			.Property(e => e.Token)
-			.HasValueGenerator<>()
 			.ValueGeneratedOnAdd();
+
+		if (_database.IsInMemory())
+		{
+			tokenBuilder.HasValueGenerator<InMemoryGuidValueGenerator>();
+		}
 	}
 }

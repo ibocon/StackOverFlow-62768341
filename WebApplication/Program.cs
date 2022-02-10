@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApplication;
 
@@ -28,7 +27,11 @@ app.MapGet("/printer", async (ApplicationContext context) =>
 
 app.MapPost("/printer", async (ApplicationContext context) =>
 {
-	PrinterEntity printer = new();
+	PrinterEntity printer = new()
+	{
+		Manager = new ManagerEntity("master@google.com"),
+	};
+
 	await context.PrinterSet.AddAsync(printer);
 	await context.SaveChangesAsync();
 

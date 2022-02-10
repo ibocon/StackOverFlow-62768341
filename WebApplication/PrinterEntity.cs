@@ -4,7 +4,7 @@ public sealed class PrinterEntity
 	: Printer
 {
 	public PrinterEntity()
-		: base()
+		: base(Guid.Empty)
 	{
 	}
 
