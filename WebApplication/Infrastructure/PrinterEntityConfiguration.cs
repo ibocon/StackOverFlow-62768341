@@ -35,5 +35,9 @@ internal sealed class PrinterEntityConfiguration
 		{
 			tokenBuilder.HasValueGenerator<InMemoryGuidValueGenerator>();
 		}
+
+		builder
+			.Property(e => e.IsOutOfControl)
+			.IsRequired();
 	}
 }

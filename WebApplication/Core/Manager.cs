@@ -13,6 +13,6 @@ public class Manager
 
 	public void FixPrinter(Printer printer)
 	{
-		throw new NotImplementedException();
+		printer.IsOutOfControl = true;
 	}
 }

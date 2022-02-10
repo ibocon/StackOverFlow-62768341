@@ -17,7 +17,6 @@ public class ApplicationContext
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
 		base.OnModelCreating(modelBuilder);
-		modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 		modelBuilder.ApplyConfiguration(new ManagerEntityConfiguration(Database));
 		modelBuilder.ApplyConfiguration(new PrinterEntityConfiguration(Database));
 	}
